@@ -1,18 +1,18 @@
 
-Node Version used - 12.13.1
-Npm Version used - 6.12.1
+Node Version used - 12.13.1<br>
+Npm Version used - 6.12.1<br>
 
-1) Navigate to the project folder
+1) Navigate to the project folder<br>
 2) Run the command
 >npm install
 This will install the dependencies mentioned in package.json to node_modules folder
 3) Run the command
 >node start
-This will run the application. The result might show up like the below.
+This will run the application. The result might show up like the below.<br>
 
 
-Total Number of Trucks in API data: 1000
-Total Number of Open Trucks Available Now: 54
+Total Number of Trucks in API data: 1000<br>
+Total Number of Open Trucks Available Now: 54<br>
 SNO  NAME                                                     ADDRESS
 ---  -------------------------------------------------------  --------------------
 1    Bay Area Dots, LLC                                       567 BAY ST
@@ -26,14 +26,14 @@ SNO  NAME                                                     ADDRESS
 9    CARDONA'S FOOD TRUCK                                     1800 MISSION ST
 10   Curry Up Now                                             370 DRUMM ST
 
-Currently displaying 10 trucks from 1 to 10.
-Type 'n' to display more trucks. Type 'e' to exit.
+Currently displaying 10 trucks from 1 to 10.<br>
+Type 'n' to display more trucks. Type 'e' to exit.<br>
 >
 
 
 
 
-4) User can type 'n' to get the next set of results or 'e' to exit.
+4) User can type 'n' to get the next set of results or 'e' to exit.<br>
 
 
 
