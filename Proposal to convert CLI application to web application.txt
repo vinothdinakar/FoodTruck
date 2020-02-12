@@ -1,0 +1,79 @@
+For supporting a million concurrent users, I would take a step by step approach.
+
+Single Server - (1-50) concurrent users -
+1) NodeJS is an event driven and non-blocking I/O model. In this case it wont wait for the response from the Socrata API.
+It will make the api call and srarts taking next request. When it received the response, it will start processing the callback.
+2) Adding a web server with event driven model like Nginx is advantageous.
+3) Lets run this in 1 CPU/1 GB RAM
+4) Since we are running a single server, we will have a downtime when we are updating the code.
+
+50-500 Concurrent Users - Vertical Scaling -
+1) With more number of users, request might start getting delayed.
+2) Lets try upgrading the server hardware with more CPU and faster RAM (4 CPU/ 16 GB RAM)
+3) With 4 CPU, we can run 4 instance of NodeJS app server. Having multiple instance will help us to reduce the
+downtime when we try to upgrade the server.
+4) Nginx can act as a Static web server (providing static files like HTML, CSS) and load balancer.
+5) At this stage we can start optimizing the code and thereby reducing the turn around time for each request.
+6) With the Vertical Scaling and code optimization we should be able to handle more concurrent user than before
+with faster response time.
+7) We can also update the server configuration like maximum concurrent request (Usually default might be low).
+8) Add metrics to keep track of user traffic and activities.
+
+500-50000 Concurrent Users - Horizontal Scaling -
+1) With the increase user count, request might again start getting delayed.
+2) Adding more servers with the above configuration might help us.
+3) Lets add a load balancer for these servers.
+4) Lets move the static files to the CDN.
+5) Different system like NodeJS app, DB, Cache can be run in separate servers.
+6) We can also have each server in different region.
+7) Use centralized logging to keep track of the logs from multiple servers
+
+50000-Million Concurrent Users
+1) We can break our application to Microservices. This way we can scale independently each service.
+2) Autoscaling - We can configure our servers to auto scale based on the traffic
+3) During peak hours we can increase the number of instances and reduce later.
+4) we can also increase or decrease based on the traffic in each geography.
+5) We can automate the process based on the metrics.
+6) Use monitoring agents to find when the server goes down and automatically restart another instance.
+
+Step by step approach will help us to find out bottleneck and resolve it at each stage. Thereby building a robust environment.
+The number of concurrent user mentioned at each stage are just an approximate estimation.
+
+
+
+Other Modules to implement:
+To convert this command line application to Web application, we might need to add the below modules too.
+
+Setup UI Application
+1) We need to setup a UI layer which the user will be seeing on the application launch.
+2) UI layer can be a single page application using AngularJS framework.
+3) UI layer will contact the backend API based on User's request.
+4) We can use JSON as the data transfer medium between UI and the server app.
+
+Setup Database and caching System
+1) In case if we want to store user data, we can use DB to store those data.
+2) We can use NoSql databases like MongoDB.
+3) At instances, when we get the same response from Socrata API, we can save the response and open truck result in the caching system
+ and respond the future request with the result from cache.
+
+Setup CI/CD
+1) Setting up Continous Integration and Continous Delivery will ease the development and deployment process.
+2) Setup automated tasks like code review, Lint, Coverage, unit test when the developer commits the changes.
+3) Trigger the build with tools like Jenkins.
+4) Automate acceptance testing, deploy to staging and smoke testing
+
+Setup Authentication & Authorization Service
+1) Application needs authentication service to prevent unauthorized access.
+2) With adding more features, we can control the users role with authorization.
+
+Setup API gateway
+1) API gateway provide lot of benefits for Microservices, public or private API.
+2) Provides security features like authentication, CORS etc.
+3) Decouple the public facing api from the underlying microservice architecture.
+
+Setup a metric System
+1) Metric System will help us to analyse the system with reference to user activities and server traffic.
+2) User activities like how many times a user is logging in the application, how long is the active session etc.
+3) Server traffic like which server is receiving more request (based on service or geography).
+4) With tracking these details,  we can make sure to optimize or increase the corresponding server instances.
+

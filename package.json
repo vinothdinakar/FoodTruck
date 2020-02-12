@@ -1,0 +1,15 @@
+{
+  "name": "show-open-food-truck",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "show-open-food-truck": "node start.js"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "console.table": "^0.10.0",
+    "https": "1.0.0",
+    "readline-sync": "^1.4.10",
+    "request": "^2.88.0"
+  }
+}
