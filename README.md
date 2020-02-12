@@ -4,10 +4,10 @@ Npm Version used - 6.12.1<br>
 
 1) Navigate to the project folder<br>
 2) Run the command
->npm install
+>npm install<br>
 This will install the dependencies mentioned in package.json to node_modules folder
 3) Run the command
->node start
+>node start<br>
 This will run the application. The result might show up like the below.<br>
 
 
